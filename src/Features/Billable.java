@@ -1,4 +1,4 @@
-package Interfaces;
+package Features;
 
 public interface Billable {
 
