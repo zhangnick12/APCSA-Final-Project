@@ -1,8 +1,0 @@
-package Features;
-
-public interface Billable {
-
-    double calculateCost();
-
-    String getDescription();
-}

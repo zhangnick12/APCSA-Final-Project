@@ -1,68 +1,61 @@
 package People;
 
-import java.util.ArrayList;
-
 public class Staff extends Person {
-    private String employeeId;
+    private String position;
+    private double salary;
     private String department;
-    private double hourlySalary;
-    private ArrayList<Integer> clockInTimes;
-    private ArrayList<Integer> clockOutTimes;
+    private String workSchedule;
 
-
-    public Staff(String id, String firstName, String lastName, String email, String phone,
-                 String employeeId, String department, double hourlySalary) {
-        super(id, firstName, lastName, email, phone);
-        this.employeeId = employeeId;
+    public Staff(String name, String id, String phoneNumber, String email,
+                 String position, double salary, String department) {
+        super(name, id, phoneNumber, email);
+        this.position = position;
+        this.salary = salary;
         this.department = department;
-        this.hourlySalary = hourlySalary;
-        this.clockInTimes = new ArrayList<>();
-        this.clockOutTimes = new ArrayList<>();
+        this.workSchedule = "9AM-5PM, Mon-Fri"; // Default schedule
     }
 
-
-    @Override
-    public String getRole() {
-        return "Staff - " + department;
+    public String getPosition() {
+        return position;
     }
 
-    public void clockInt(int time) {
-        clockInTimes.add(time);
+    public void setPosition(String position) {
+        this.position = position;
     }
 
+    public double getSalary() {
+        return salary;
+    }
 
-    public void clockOut(int time) {
-        if (clockInTimes.size() > clockOutTimes.size()) {
-            clockOutTimes.add(time);
+    public void setSalary(double salary) {
+        if (salary >= 0) {
+            this.salary = salary;
         }
     }
 
-    public double calculateHoursWorked() {
-        double totalHours = 0.0;
-
-
-        for (int i = 0; i < clockOutTimes.size(); i++) {
-            totalHours = clockOutTimes.get(i) - clockInTimes.get(i);
-        }
-
-        return totalHours;
+    public String getDepartment() {
+        return department;
     }
 
-    public double calculateSalary() {
-        return calculateHoursWorked() * hourlySalary;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public String getEmployeeId() { return employeeId; }
-    public String getDepartment() { return department; }
-    public double getHourlySalary() { return hourlySalary; }
-    public void setHourlySalary(double hourlySalary) { this.hourlySalary = hourlySalary; }
+    public String getWorkSchedule() {
+        return workSchedule;
+    }
+
+    public void setWorkSchedule(String workSchedule) {
+        this.workSchedule = workSchedule;
+    }
 
     @Override
-    public String toString() {
-        return super.toString() + "\n"
-                + "Employee ID: " + employeeId + "\n"
-                + "Department: " + department + "\n"
-                + "Hourly Salary: $" + hourlySalary + "\n"
-                + "Hours Worked: " + calculateHoursWorked();
+    public String displayInfo() {
+        return "Staff: " + getName() +
+                "\nID: " + getId() +
+                "\nContact: " + getPhoneNumber() + ", " + getEmail() +
+                "\nPosition: " + position +
+                "\nDepartment: " + department +
+                "\nSchedule: " + workSchedule;
     }
 }

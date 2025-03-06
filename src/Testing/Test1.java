@@ -1,7 +1,10 @@
 package Testing;
 
+import People.Customer;
+import People.Staff;
+
 public class Test1 {
     public static void main(String[] args) {
-        System.out.println("Hello World");
+
     }
 }

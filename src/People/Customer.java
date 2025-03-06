@@ -3,66 +3,113 @@ package People;
 import java.util.ArrayList;
 
 public class Customer extends Person {
-    private String loyaltyId;
     private int loyaltyPoints;
-    private String membershipTier; // "Standard", "Silver", "Gold", "Platinum"
-    private ArrayList<Reservation> bookingHistory;
-    private ArrayList<String> preferences;
+    private String membershipTier; // Regular, Silver, Gold, Platinum
+    private ArrayList<String> specialRequests;
+    private ArrayList<Booking> bookingHistory;
 
-    public Customer(String id, String firstName, String lastName, String email, String phone,
-                    String loyaltyId) {
-        super(id, firstName, lastName, email, phone);
-        this.loyaltyId = loyaltyId;
+    public Customer(String name, String id, String phoneNumber, String email) {
+        super(name, id, phoneNumber, email);
         this.loyaltyPoints = 0;
-        this.membershipTier = "Standard";
-        this.bookingHistory = new ArrayList<>();
-        this.preferences = new ArrayList<>();
+        this.membershipTier = "Regular";
+        this.specialRequests = new ArrayList<String>();
+        this.bookingHistory = new ArrayList<Booking>();
     }
 
-
-    @Override
-    public String getRole() {
-        return "Customer";
-    }
-
-    public void addReservation(Reservation reservation) {
-        bookingHistory.add(reservation);
-    }
-
-    public void addPreference(String preference) {
-        preferences.add(preference);
-    }
-
+    /**
+     * Adds loyalty points to the customer's account
+     *
+     * @param points Number of points to add
+     */
     public void addLoyaltyPoints(int points) {
-        this.loyaltyPoints += points;
-        updateMembershipTier();
-    }
-
-    private void updateMembershipTier() {
-        if (loyaltyPoints >= 50000) {
-            membershipTier = "Platinum";
-        } else if (loyaltyPoints >= 25000) {
-            membershipTier = "Gold";
-        } else if (loyaltyPoints >= 10000) {
-            membershipTier = "Silver";
-        } else {
-            membershipTier = "Standard";
+        if (points > 0) {
+            this.loyaltyPoints += points;
+            updateMembershipTier();
         }
     }
 
-    public String getLoyaltyId() { return loyaltyId; }
-    public int getLoyaltyPoints() { return loyaltyPoints; }
-    public String getMembershipTier() { return membershipTier; }
-    public ArrayList<Reservation> getBookingHistory() { return bookingHistory; }
-    public ArrayList<String> getPreferences() { return preferences; }
+    /**
+     * Updates the membership tier based on loyalty points
+     * Satisfies requirement #3 - if-then-else statements
+     */
+    private void updateMembershipTier() {
+        if (loyaltyPoints >= 10000) {
+            membershipTier = "Platinum";
+        } else if (loyaltyPoints >= 5000) {
+            membershipTier = "Gold";
+        } else if (loyaltyPoints >= 2000) {
+            membershipTier = "Silver";
+        } else {
+            membershipTier = "Regular";
+        }
+    }
 
+    /**
+     * Adds a special request for the customer
+     *
+     * @param request The special request to add
+     */
+    public void addSpecialRequest(String request) {
+        specialRequests.add(request);
+    }
+
+    /**
+     * Adds a booking to the customer's history
+     *
+     * @param booking The booking to add
+     */
+    public void addBooking(Booking booking) {
+        bookingHistory.add(booking);
+    }
+
+    /**
+     * Gets the customer's booking history
+     *
+     * @return ArrayList of the customer's bookings
+     */
+    public ArrayList<Booking> getBookingHistory() {
+        return bookingHistory;
+    }
+
+    /**
+     * Gets the customer's loyalty points
+     *
+     * @return The customer's loyalty points
+     */
+    public int getLoyaltyPoints() {
+        return loyaltyPoints;
+    }
+
+    /**
+     * Gets the customer's membership tier
+     *
+     * @return The customer's membership tier
+     */
+    public String getMembershipTier() {
+        return membershipTier;
+    }
+
+    /**
+     * Gets the customer's special requests
+     *
+     * @return ArrayList of the customer's special requests
+     */
+    public ArrayList<String> getSpecialRequests() {
+        return specialRequests;
+    }
+
+    /**
+     * Implementation of abstract method from Person class
+     * Satisfies requirement #7 - Implementation of inherited method
+     *
+     * @return String representation of customer details
+     */
     @Override
-    public String toString() {
-        return super.toString() + "\n"
-                + "Loyalty ID: " + loyaltyId + "\n"
-                + "Points: " + loyaltyPoints + "\n"
-                + "Tier: " + membershipTier + "\n"
-                + "Preferences: " + String.join(", ", preferences) + "\n"
-                + "Number of Past Bookings: " + bookingHistory.size();
+    public String displayInfo() {
+        return "Customer: " + getName() +
+                "\nID: " + getId() +
+                "\nContact: " + getPhoneNumber() + ", " + getEmail() +
+                "\nLoyalty Status: " + membershipTier +
+                "\nPoints: " + loyaltyPoints;
     }
 }
