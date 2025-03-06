@@ -1,0 +1,28 @@
+The proposed hotel reservation system will be a comprehensive management solution for hotel
+operations, designed to accommodate all aspects from initial booking through final check-out
+while maintaining customer relationships through a loyalty program (ex. Marriott Bonvoy).
+This proposal outlines the core features, technical requirements, and implementation for the
+system and each subsystem. The system will implement comprehensive management capabilities,
+storing essential customer profiles that include personal information such as names, contact
+details, and identification documents, including some requested services (ex. Dry Cleaning).
+The system will maintain a detailed booking history for each customer and track their
+points balance, payment information, current account balance, and special preferences or
+requirements. For reservation management, the system will provide statuses for each room,
+handle the booking process, and manage check-in and check-out times
+(including requested late checkouts and/or early check-in).
+It will also allow for customers to input their stay details to check for availability.
+It will support multiple room types including single occupancy, double occupancy,
+triple occupancy, and suites. Room and services management will be a key component,
+tracking room status (ex. available, occupied, or under maintenance), handling room
+assignments, and managing additional services. These services include television packages,
+transportation arrangements, taxis, ubers, customizable meal plans, and room service requests.
+The payment processing module will support multiple payment methods, handle deposits and cancellation
+fees, process refunds when necessary, and generate detailed invoices for all transactions.
+To encourage customer loyalty, the system will implement a comprehensive rewards program that
+allows guests to earn points on stays and service usage. Customers can redeem these points for
+future stays or services, and the system will track tier status for premium customers, enabling the
+hotel to offer specialized services to its most valued guests. The technical implementation will
+utilize various data structures to ensure efficient operation. These include arrays and ArrayLists
+for storing customer and booking information, 2D arrays for room management organized by floor and
+room number, and queues for managing service requests. This architecture will ensure optimal
+performance and scalability of the system.

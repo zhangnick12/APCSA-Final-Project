@@ -1,4 +1,4 @@
-package People;
+package Hotel;
 
 public interface Payable {
     double calculatePayment();

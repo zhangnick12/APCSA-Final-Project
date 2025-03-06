@@ -1,4 +1,4 @@
-package People;
+package Hotel;
 
 public class Payment implements Payable {
     private String paymentId;

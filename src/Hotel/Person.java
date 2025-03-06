@@ -1,4 +1,4 @@
-package People;
+package Hotel;
 
 public abstract class Person {
     // Private instance variables

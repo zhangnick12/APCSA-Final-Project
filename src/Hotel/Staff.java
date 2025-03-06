@@ -1,4 +1,4 @@
-package People;
+package Hotel;
 
 public class Staff extends Person {
     private String position;

@@ -1,7 +1,5 @@
 package Testing;
-import People.*;
-
-import java.time.LocalDate;
+import Hotel.*;
 
 public class Test1 {
     public static void main(String[] args) {

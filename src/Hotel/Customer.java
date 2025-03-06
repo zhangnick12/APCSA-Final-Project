@@ -1,4 +1,4 @@
-package People;
+package Hotel;
 
 import java.util.ArrayList;
 
@@ -35,11 +35,6 @@ public class Customer extends Person {
         }
     }
 
-    /**
-     * Adds a special request for the customer
-     *
-     * @param request The special request to add
-     */
     public void addSpecialRequest(String request) {
         specialRequests.add(request);
     }
