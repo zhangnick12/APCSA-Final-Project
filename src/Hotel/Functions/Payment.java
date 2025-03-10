@@ -1,4 +1,4 @@
-package Hotel;
+package Hotel.Functions;
 
 public class Payment implements Payable {
     private String paymentId;

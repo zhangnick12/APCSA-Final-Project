@@ -1,4 +1,4 @@
-package Hotel;
+package Hotel.Functions;
 
 import java.util.ArrayList;
 

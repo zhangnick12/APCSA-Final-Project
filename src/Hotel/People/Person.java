@@ -1,4 +1,4 @@
-package Hotel;
+package Hotel.People;
 
 public abstract class Person {
     // Private instance variables

@@ -1,4 +1,6 @@
-package Hotel;
+package Hotel.People;
+
+import Hotel.Functions.Booking;
 
 import java.util.ArrayList;
 

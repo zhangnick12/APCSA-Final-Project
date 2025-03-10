@@ -1,4 +1,4 @@
-package Hotel;
+package Hotel.Functions;
 
 public interface Payable {
     double calculatePayment();

@@ -1,0 +1,120 @@
+@startuml
+
+package Hotel {
+    class Hotel {
+        - String name
+        - String address
+        - ArrayList<Room> rooms
+        - ArrayList<Staff> staff
+        - ArrayList<Booking> bookings
+        - ArrayList<Customer> customers
+        - ArrayList<Booking> waitingList
+        + Hotel(String name, String address)
+        + void addRoom(Room room)
+        + void addStaff(Staff staffMember)
+        + void registerCustomer(Customer customer)
+        + ArrayList<Room> findAvailableRooms(LocalDate checkIn, LocalDate checkOut)
+        + Booking createBooking(Customer customer, LocalDate checkIn, LocalDate checkOut)
+        + boolean confirmBooking(Booking booking)
+        + void addToWaitingList(Booking booking)
+        + boolean processCheckout(String bookingId)
+        + Booking findBookingById(String bookingId)
+        + String getStatistics()
+        + String getName()
+        + String getAddress()
+        + ArrayList<Room> getAllRooms()
+        + ArrayList<Staff> getAllStaff()
+        + ArrayList<Booking> getAllBookings()
+        + ArrayList<Customer> getAllCustomers()
+    }
+
+    class Staff extends Person {
+        - String position
+        - double salary
+        - String department
+        - String workSchedule
+        + Staff(String name, String id, String phoneNumber, String email, String position, double salary, String department)
+        + String getPosition()
+        + void setPosition(String position)
+        + double getSalary()
+        + void setSalary(double salary)
+        + String getDepartment()
+        + void setDepartment(String department)
+        + String getWorkSchedule()
+        + void setWorkSchedule(String workSchedule)
+        + String displayInfo()
+    }
+
+    class Customer extends Person {
+        - int loyaltyPoints
+        - String membershipTier
+        - ArrayList<String> specialRequests
+        - ArrayList<Booking> bookingHistory
+        + Customer(String name, String id, String phoneNumber, String email)
+        + void addLoyaltyPoints(int points)
+        + void addSpecialRequest(String request)
+        + void addBooking(Booking booking)
+        + ArrayList<Booking> getBookingHistory()
+        + int getLoyaltyPoints()
+        + String getMembershipTier()
+        + ArrayList<String> getSpecialRequests()
+        + String displayInfo()
+    }
+
+    class Booking {
+        - String bookingId
+        - Customer customer
+        - ArrayList<Room> rooms
+        - LocalDate checkInDate
+        - LocalDate checkOutDate
+        - double totalAmount
+        - boolean isPaid
+        - String status
+        - ArrayList<String> additionalServices
+        + Booking(String bookingId, Customer customer, LocalDate checkInDate, LocalDate checkOutDate)
+        + boolean addRoom(Room room)
+        + long calculateNights()
+        + void calculateTotalAmount()
+        + void addService(String service, double cost)
+        + void setPaid(boolean isPaid)
+        + boolean isPaid()
+        + void setStatus(String status)
+        + String getStatus()
+        + String getBookingId()
+        + Customer getCustomer()
+        + LocalDate getCheckInDate()
+        + LocalDate getCheckOutDate()
+        + double getTotalAmount()
+        + ArrayList<Room> getRooms()
+        + ArrayList<String> getAdditionalServices()
+        + boolean cancelBooking()
+        + String toString()
+    }
+
+    class Room {
+        - String roomNumber
+        - String roomType
+        - boolean isAvailable
+        + Room(String roomNumber, String roomType)
+        + boolean isAvailable()
+        + void setAvailable(boolean available)
+        + String getRoomNumber()
+        + String getRoomType()
+    }
+}
+
+package Testing {
+    class Test1 {
+        + static void main(String[] args)
+    }
+}
+
+Hotel "1" *-- "many" Room
+Hotel "1" *-- "many" Staff
+Hotel "1" *-- "many" Booking
+Hotel "1" *-- "many" Customer
+Booking "1" *-- "many" Room
+Booking "1" *-- "1" Customer
+Booking "1" *-- "many" String : additionalServices
+
+@enduml

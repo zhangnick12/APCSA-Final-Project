@@ -1,4 +1,9 @@
 package Hotel;
+import Hotel.Functions.Booking;
+import Hotel.Functions.Room;
+import Hotel.People.Customer;
+import Hotel.People.Staff;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 

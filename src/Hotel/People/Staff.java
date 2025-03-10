@@ -1,4 +1,4 @@
-package Hotel;
+package Hotel.People;
 
 public class Staff extends Person {
     private String position;

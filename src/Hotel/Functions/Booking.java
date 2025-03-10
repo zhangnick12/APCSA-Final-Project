@@ -1,4 +1,6 @@
-package Hotel;
+package Hotel.Functions;
+
+import Hotel.People.Customer;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,6 @@ public class Booking {
         if (room != null && room.isAvailable()) {
             rooms.add(room);
             room.setAvailable(false);
-            calculateTotalAmount();
             return true;
         }
         return false;
